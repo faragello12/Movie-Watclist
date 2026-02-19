@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Watchlist</title>
+    </head>
+    <body>
+        <div class="site-container">
+            <main>
+                <img src="images/1.jpg" class="banner-img" alt="portraits photos of movies " >
+                <h1>Find your film</h1>
+                <a id="btn" href="watch-list.html">My Watchlist</a>
+                <section class="search-container">
+            </section>
+            </main>
+            <section class="search-container">
+                <div class="form">
+                    <img src="images/search.svg" class="search-icon" alt="search icon" width="20" height="20">
+                    <input type="text" name="search" id="search-input" placeholder="Search for movies...">
+                </div>
+                <button id="search-btn">Search</button>
+            </section>
+            <div class="movie-container">
+                    <img src="images/film.svg" alt="exoloring" width="60" height="70">
+                    <p>Start exploring</p>
+            </div>
+            <div class="empty-results" id="empty-results">
+                <h3>
+                    Unable to find what you’re looking for. Please try another search.
+                </h3>
+            </div>
+            <div class="search-results">
+            <!--<div class="movies-container" id="movies-container">
+                    <img src="images/poster.png" alt="movie poster">
+                    <div class="movie-info" id="movie-info">
+                        <div class="coloumn1" id="coloumn1">
+                            <h2 id="movie-title">Blade Runner</h2>
+                            <img id="star-icon" src="images/star.svg" alt="star icon">
+                            <h4 id="movie-rating">8.1</h4>
+                        </div>
+                        <div class="coloumn2" id="coloumn2">
+                            <h4 id="movie-runtime">116 min</h4>
+                            <h4 id="movie-type">Drama, Mystery</h4>
+                        </div>
+                        <div class="coloumn3" id="coloumn3">
+                            <p id="movie-description">A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.</p>
+                        </div>
+                        <div class="coloumn4" id="coloumn4">
+                            <img id="add-btn" src="images/add.svg" alt="add to watchlist icon">
+                            <h4 id="watchlist-text">Add to Watchlist</h4>
+                        </div>    
+                    </div>    
+                </div> -->
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
