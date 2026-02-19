@@ -38,9 +38,11 @@ searchBtn.addEventListener('click', function() {
                         <div class="coloumn3" id="coloumn3">
                             <p id="movie-description">${data.Plot}</p>
                         </div>
-                        <div class="coloumn4" id="coloumn4">
-                            <img id="add-btn" src="images/add.svg" alt="add to watchlist icon">
-                            <h4 id="watchlist-text">Add to Watchlist</h4>
+                        <div class="coloumn4">
+                            <button class="add-btn">
+                                <img src="images/add.svg" alt="add to watchlist icon">
+                                <span>Add to Watchlist</span>
+                            </button>
                         </div>    
                     </div>    
                 </div>
@@ -50,14 +52,16 @@ searchBtn.addEventListener('click', function() {
     })
 })
 
-addEventListener('click', function(event) {
-    if (event.target.id === 'coloumn4' || event.target.id === 'add-btn' || event.target.id === 'watchlist-text') {
-        const movieTitle = event.target.parentElement.parentElement.querySelector('#movie-title').textContent
-        const movieRating = event.target.parentElement.parentElement.querySelector('#movie-rating').textContent
-        const movieRuntime = event.target.parentElement.parentElement.querySelector('#movie-runtime').textContent
-        const movieType = event.target.parentElement.parentElement.querySelector('#movie-type').textContent
-        const movieDescription = event.target.parentElement.parentElement.querySelector('#movie-description').textContent
-        const moviePoster = event.target.parentElement.parentElement.parentElement.querySelector('img').src
+document.addEventListener('click', function(event) {
+    if (event.target.closest('.add-btn')) {
+        const btn = event.target.closest('.add-btn')
+        const movieInfo = btn.parentElement.parentElement
+        const movieTitle = movieInfo.querySelector('#movie-title').textContent
+        const movieRating = movieInfo.querySelector('#movie-rating').textContent
+        const movieRuntime = movieInfo.querySelector('#movie-runtime').textContent
+        const movieType = movieInfo.querySelector('#movie-type').textContent
+        const movieDescription = movieInfo.querySelector('#movie-description').textContent
+        const moviePoster = movieInfo.parentElement.querySelector('img').src
         const movie = {
             title: movieTitle,
             rating: movieRating,
@@ -66,12 +70,24 @@ addEventListener('click', function(event) {
             description: movieDescription,
             poster: moviePoster
         }
-        const watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
-        watchlist.push(movie)
-        localStorage.setItem('watchlist', JSON.stringify(watchlist))
-        
-
-        console.log(watchlist)
+        let watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
+        // Check if movie already exists
+        const exists = watchlist.some(item => item.title === movie.title)
+        if (!exists) {
+            watchlist.push(movie)
+            localStorage.setItem('watchlist', JSON.stringify(watchlist))
+            // Change button style
+            btn.classList.add('added')
+            btn.querySelector('span').textContent = 'Added'
+            btn.disabled = true
+        } else {
+            // Already in watchlist, just update button
+            btn.classList.add('added')
+            btn.querySelector('span').textContent = 'Added'
+            btn.disabled = true
+        }
     }
-}) 
+})
+
+
 
